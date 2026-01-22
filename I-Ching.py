@@ -1,3 +1,6 @@
+def main():
+    pass
+
 ##定义占卜函数
 #将筹策随意分成两份
 import random
@@ -38,8 +41,8 @@ zlines = []
 
 #重复六次，得到六爻的卦数
 for i in range(6):
-    sum = 50-1
-    num1, num2 = generate_numbers(sum)
+    total = 50-1
+    num1, num2 = generate_numbers(total)
     
     #从第一份筹策中先取出一根，余下的筹策每四个一组，将多余的不足四支的筹策取出
     a = (num1-1)%4
@@ -67,11 +70,11 @@ for i in range(6):
     lines.append(line(i, linenum))
     zlines.append(zline(i,linenum))
 
-print
-print "卦数：",(linenums)
-print "本卦：", (lines)
-print "之卦：",(zlines)
-print
+
+print("\n卦数：", linenums)
+print("本卦：", lines)
+print("之卦：", zlines)
+
 
 #本卦上卦与下卦
 trigramb = lines[0],lines[1],lines[2]
@@ -81,9 +84,10 @@ trigramt = lines[3],lines[4],lines[5]
 ztrigramb = zlines[0],zlines[1],zlines[2]
 ztrigramt = zlines[3],zlines[4],zlines[5]
 
-print "本卦上卦：",trigramt,"之卦上卦：",ztrigramt
-print "本卦下卦：",trigramb,"之卦下卦：",ztrigramb
-print
+
+print("\n本卦上卦：", trigramt, "之卦上卦：", ztrigramt)
+print("本卦下卦：", trigramb, "之卦下卦：", ztrigramb)
+
 
 #找到变爻位置（朱熹法，上爻为主爻）
 
@@ -95,7 +99,7 @@ for k in range(6):
 
 blines = [k + 1 for k in bline_list]
     
-print "变爻位置：",blines
+print("\n变爻位置：", blines)
 
 # Turn the reslts to trigrams
 trigram = {
@@ -275,22 +279,9 @@ blines_def = {
   6:"六爻变者，参考乾坤而卦的用（九、六）辞，并参考之卦卦辞"
 }
 
-print
-print
-print "本卦"
-print
-print bengua
-print 
-print hexagram_ex[hexagram]
-print 
-print
-print "变爻：第",blines,"爻"
-print
-print blines_def[len(blines)]
-print
-print
-print "之卦"
-print
-print zhigua 
-print
-print hexagram_ex[zhexagram]
+
+print("\n本卦\n", bengua)
+print(hexagram_ex.get(hexagram))
+print("\n变爻：第", blines, "爻")
+print("\n之卦\n", zhigua)
+print(hexagram_ex.get(zhexagram))
