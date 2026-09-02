@@ -5,11 +5,11 @@ def main():
 #将筹策随意分成两份
 import random
 
-def generate_numbers(sum):
+def generate_numbers(sum0):
     while True:
-        num1 = random.randint(0, sum)
-        num2 = sum - num1
-        if num1 + num2 == sum:
+        num1 = random.randint(0, sum0)
+        num2 = sum0 - num1
+        if num1 + num2 == sum0:
             return num1, num2
 
 #计算拿走的筹策（若没有多余的筹策，则取出四根）
@@ -42,7 +42,8 @@ zlines = []
 #重复六次，得到六爻的卦数
 for i in range(6):
     total = 50-1
-    num1, num2 = generate_numbers(total)
+    sum0 = total
+    num1, num2 = generate_numbers(sum0)
     
     #从第一份筹策中先取出一根，余下的筹策每四个一组，将多余的不足四支的筹策取出
     a = (num1-1)%4
@@ -51,16 +52,16 @@ for i in range(6):
     b = num2%4
     
     #得出所剩筹策（若前两份筹策任何一份没有多余的筹策，则在那份中取出四根），其必为4的倍数
-    sum1 = sum-1-Remainder(a)-Remainder(b)
+    sum1 = sum0-1-Remainder(a)-Remainder(b)
     
     #再重复以上步骤两次
     for j in range(2):
-        sum = sum1
-        num1, num2 = generate_numbers(sum)
+        sum0 = sum1
+        num1, num2 = generate_numbers(sum0)
 
         a = (num1-1)%4
         b = num2%4
-        sum1 = sum-1-Remainder(a)-Remainder(b)
+        sum1 = sum0-1-Remainder(a)-Remainder(b)
     
     #得到一爻的卦数
     linenum = int(sum1/4)
